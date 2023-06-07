@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ii pair<int,int>
+#define F first
+#define S second
+#define bit(i,x) ((x>>i)&1)
+#define pb push_back
+#define mp make_pair
+
+using namespace std;
+const int maxn = 2e5 + 5;
+const int inf = 1e9;
+const ll INF = 1e18;
+const int mod = 1e9 + 7;
+
+int money, costBottle, costBar;
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> money >> costBottle >> costBar;
+    for(int x = 0; x <= money; x++) {
+        // Tìm số x mà tổng giá tiền lớn hơn số tiền đang có thì dừng lại
+        if(x * costBottle > money) break;
+        bool can = (money - x*costBottle) % costBar; // can là điều kiện xem có tồn tại số y thỏa mãn không
+        if(can == 0) {
+            cout << "YES\n";
+            cout << x << " " << (money - x*costBottle) / costBar << '\n';
+            return 0;
+        }
+    }
+    // In ra NO do không tồn tại cặp số thỏa mãn
+    cout << "NO\n";
+    return 0;
+}
