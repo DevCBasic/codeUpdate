@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ii pair<int,int>
+#define F first
+#define S second
+#define bit(i,x) ((x>>i)&1)
+#define pb push_back
+#define mp make_pair
+
+using namespace std;
+const int maxn = 203;
+const int inf = 1e9;
+const ll INF = 1e18;
+const int mod = 1e9 + 7;
+
+int numTest;
+bool del[maxn];
+
+struct Array{
+    int speed, ram, hdd, cost;
+} a[maxn];
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> numTest;
+    for(int i = 1; i <= numTest; i++) cin >> a[i].speed >> a[i].ram >> a[i].hdd >> a[i].cost;
+
+    for(int i = 1; i <= numTest; i++)
+        for(int j = 1; j <= numTest; j++) {
+            if(i == j) continue;
+            if(a[i].speed < a[j].speed && a[i].ram < a[j].ram && a[i].hdd < a[j].hdd) del[i] = 1;
+        }
+
+    int minCost = inf, ans;
+    for(int i = 1; i <= numTest; i++) if(!del[i]) {
+        if(minCost > a[i].cost) minCost = a[i].cost, ans = i;
+    }
+
+    cout << ans;
+    return 0;
+}
