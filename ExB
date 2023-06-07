@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int number;
+
+int cal(int num){
+    // hàm kiểm tra số hoàn hảo không?
+	int ans = 0;
+	while (num){
+		ans += num % 10;
+		num /= 10;
+	}
+	return ans;
+}
+ 
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+	cin >> number;
+	int ans = 0;
+	while(number > 0){
+		ans++;
+		if(cal(ans) == 10) n--;
+	}
+	printf("%d\n", ans);
+}
